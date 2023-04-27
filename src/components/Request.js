@@ -1,7 +1,15 @@
-import React from "react"
-
+import React, {useState, useEffect} from "react"
+import axios from "axios"
+import { CSVLink } from "react-csv";
 
 const Request = () => {
+  const [features, setFeature] = useState([]);
+  const [searchText, setsearchText] = useState("");
+
+
+  
+
+  
     return (
         <div style={{ height: "auto" }} className="w-full">
         <div className="flex mb-4 ">
@@ -67,8 +75,8 @@ const Request = () => {
                   <input
                     type="text"
                     id="table-search"
-                    // value={searchText}
-                    // onChange={(e) => setsearchText(e.target.value)}
+                    value={searchText}
+                    onChange={(e) => setsearchText(e.target.value)}
                     className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Search School"
                   />
@@ -77,7 +85,7 @@ const Request = () => {
                   {/* <CSVLink filename={`traitement-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
                     features
                       .filter((feature) =>
-                        (feature.attributes.numero_colis + "").startsWith(
+                        (feature.attributes.School + "").startsWith(
                           searchText
                         )
                       ).map(f => (
@@ -121,7 +129,7 @@ const Request = () => {
                         Total i3
                       </th>
                       <th scope="col" className="px-6 py-3 font-bold">
-                      Total i3
+                      Total i5
                       </th>
                       <th scope="col" className="px-6 py-3 font-bold">
                       Total i7 (8GB)
@@ -130,65 +138,46 @@ const Request = () => {
                       Total i7 (16GB)
                       </th>
                       <th scope="col" className="px-6 py-3">
-                      Total i7 (16GB)
+                      Date
                       </th>
                     </tr>
                   </thead>
-                  {/* <tbody>
-                    {features
-                      .filter((feature) =>
-                        (feature.attributes.numero_colis + "").startsWith(
-                          searchText
-                        )
-                      )
-                      .map((feature: any, index: any) => (
+                  <tbody>
+                    
                         <tr
-                          key={index}
+                          // key={index}
                           className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                         >
                           <td className="px-6 py-4">
-                            {feature?.attributes.numero_colis}
+                            {/* {feature?.attributes.School} */}
                           </td>
-                          <td className="px-6 py-4">
-                            {new Date(
-                              feature?.attributes.date_livraison
-                            ).toLocaleDateString()}
-                          </td>
+  
                           <td className="px-6 py-4 ">
-                            {feature?.attributes.origine}
+                            {/* {feature?.attributes.Total_number_of_computers} */}
                           </td>
                           <td className="px-6 py-4">
-                            {feature?.attributes.type_envoi}
+                            {/* {feature?.attributes.Specification} */}
                           </td>
                           <td className="px-6 py-4">
-                            {feature?.attributes.lnom_expediteur}
+                            {/* {feature?.attributes.specifation_i3} */}
                           </td>
                           <td className="px-6 py-4">
-                            {feature?.attributes.lnom_de_destinataire}
+                            {/* {feature?.attributes.specifation_i5} */}
                           </td>
                           <td className="px-6 py-4">
-                            <button
-                              className="bg-red-800 text-white p-2 rounded"
-                              onClick={() => {
-                                setTempId(feature.attributes.objectid)
-                                setData(feature.attributes)
-                                setShowModal(true);
-                                console.log("__________________________", feature.attributes.objectid);
+                            {/* {feature?.attributes.specifation_i7_8GB} */}
+                          </td>
+                          <td className="px-6 py-4">
+                            {/* {feature?.attributes.specifation_i7_16GB} */}
+                          </td>
+                      <td className="px-6 py-4">
+                            {/* {feature?.attributes.CreationDate} */}
+                          </td>
 
-                              }}
-                            >
-                              Details
-                            </button>
-                            <ColisModal
-                              setShowModal={setShowModal}
-                              showModal={showModal}
-                              objid={tempId}
-                              data={data}
-                            />
-                          </td>
+
                         </tr>
-                      ))}
-                  </tbody> */}
+                      {/* ))} */}
+                  </tbody>
                 </table>
                 {/* <DataTable columns={columns} rows={colins} /> */}
               </div>
