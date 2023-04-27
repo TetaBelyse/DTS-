@@ -1,19 +1,23 @@
 import React from 'react'
-import Colis from './Colis'
+import Dashboard from './Dashboard'
+import Request from './Request'
+import Delivery from './Delivery'
+import Distribution from './Distribution'
+import Claim from './Claim'
 
 const Content = (props) => {
     return (
         <div className='w-5/6'>
             {
                 props.activeTab === 1 ? 
-                <Colis/> : 
+                <Dashboard/> : 
                 props.activeTab === 2 ? 
-                'Tab 2' : 
+                <Request/> : 
                 props.activeTab === 3 ? 
-                'Tab 3' 
+                <Delivery/>
                 : props.activeTab === 4 ? 
-                'Tab 4' : 
-                'Tab 5'
+               <Distribution/> : 
+               <Claim/>
             }
         </div>
     )

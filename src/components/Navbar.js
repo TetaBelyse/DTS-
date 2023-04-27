@@ -7,10 +7,10 @@ const Navbar = () => {
         <img src={logo} className='h-16 bg-white' />
       </div>
       <div className='text-lg font-semibold'>
-        Logiciel de gestion de colis
+      Dimension Technologies System
       </div>
       <div className="pr-4 p-2">
-        <button className="bg-cyan-200 hover:bg-cyan-300 px-4 rounded-full p-1 font-semibold uppercase">Se connecte</button>
+        <button className="bg-cyan-200 hover:bg-cyan-300 px-4 rounded-full p-1 font-semibold uppercase">Logout</button>
       </div>
     </div>
   )
