@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export const ModalComponents = ({ showModal, setShowModal, objid, data }) => {
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
+  //   const token = localStorage.getItem("token");
+  //   const username = localStorage.getItem("username");
 
   const baseUrl = `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_8e9cae3f320843b3be1c4f254bca2f5b/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson`;
 
@@ -15,9 +15,8 @@ export const ModalComponents = ({ showModal, setShowModal, objid, data }) => {
     axios(baseUrl).then((res) => {
       tr = res.data.features[0].attributes;
       setSelectData(res.data.features[0].attributes);
-
       console.log("+++++++++++++++++++", res.data.features[0].attributes);
-      console.log("___________________", tr);
+        console.log("___________________", tr);
     });
   };
 
@@ -41,7 +40,7 @@ export const ModalComponents = ({ showModal, setShowModal, objid, data }) => {
               <div className=" border-0 rounded-lg shadow-lg relative flex flex-col items-center w-full bg-white ">
                 <div className="flex items-start justify-between p-2 pl-6 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-center text-3xl text-gray-600 font-semibold">
-                    Détails de Colis
+                    Student Invoice
                   </h3>
                 </div>
                 <button onClick={() => window.print()}>
@@ -65,116 +64,74 @@ export const ModalComponents = ({ showModal, setShowModal, objid, data }) => {
                   <dl className="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Numéro de Colis:{" "}
+                        Names:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {data?.numero_colis}
+                        {data?.student_name}
                       </dd>
                     </div>
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Date de Livraison:{" "}
+                        Registration Number:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {new Date(data?.date_livraison).toLocaleDateString()}
+                        {data?.registration_number}
                       </dd>
                     </div>
                     <div className="flex md:flex-row pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Origine:{" "}
+                        School:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {data?.origine}
+                        {data?.school}
                       </dd>
                     </div>
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Destination:{" "}
+                        faculty:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {data?.destination}
+                        {data?.faculty}
                       </dd>
                     </div>
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Nom de Destinataire:{" "}
+                        Telephone:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {data?.lnom_de_destinataire}
+                        {data?.telphone}
                       </dd>
                     </div>
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Téléphone du Destinataire:{" "}
+                        Email:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {data?.ldestinataire_telephone}
+                        {data?.email}
                       </dd>
                     </div>
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Email du Destinataire:{" "}
+                        Serial Number:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {data?.ldestinataire_email}
+                        {data?.bar_code}
                       </dd>
                     </div>
 
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Nom de l'Expéditeur:{" "}
+                        Date:{" "}
                       </dt>
                       <dd className="text-md text-gray-900 font-semibold">
-                        {data?.lnom_expediteur}
+                        {new Date(data?.CreationDate).toLocaleDateString()}
                       </dd>
                     </div>
                     <div className="flex  pt-3">
                       <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Téléphone de l'Expéditeur:{" "}
+                        Signature:{" "}
                       </dt>
-                      <dd className="text-md text-gray-900 font-semibold">
-                        {data?.ltelephone_expediteur}
-                      </dd>
-                    </div>
-                    <div className="flex  pt-3">
-                      <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Email de l'Expéditeur:{" "}
-                      </dt>
-                      <dd className="text-md text-gray-900 font-semibold">
-                        {data?.lemail_expediteur}
-                      </dd>
-                    </div>
-                    <div className="flex  pt-3">
-                      <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Type d'envoi:{" "}
-                      </dt>
-                      <dd className="text-md text-gray-900 font-semibold">
-                        {data?.type_envoi}
-                      </dd>
-                    </div>
-                    <div className="flex  pt-3">
-                      <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Statut de Livraison:{" "}
-                      </dt>
-                      <dd className="text-md text-gray-900 font-semibold">
-                        {data?.lstatus}
-                      </dd>
-                    </div>
-                    <div className="flex py-3">
-                      <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Poids:
-                      </dt>
-                      <dd className="text-md text-gray-900 font-semibold">
-                        {data?.poids}
-                      </dd>
-                    </div>
-                    <div className="flex pt-3">
-                      <dt className="mb-1 text-gray-500 md:text-md dark:text-gray-400">
-                        Prix:
-                      </dt>
-                      <dd className="text-md text-gray-900 font-semibold">
-                        {data?.prix}
-                      </dd>
+                      <dd className="text-md text-gray-900 font-semibold"></dd>
                     </div>
                   </dl>
                 </div>
@@ -183,11 +140,11 @@ export const ModalComponents = ({ showModal, setShowModal, objid, data }) => {
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-grey-900 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
-                    Fermer
+                    Close
                   </button>
                 </div>
               </div>

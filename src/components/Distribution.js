@@ -5,26 +5,28 @@ import Modal from "../Modal/Modal";
 const Distribution = () => {
   const [features, setFeature] = useState([]);
   const [searchText, setsearchText] = useState("");
-
-  const fetchPost = () => {
-    const api = {
-      method: "get",
-      url: "https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_8e9cae3f320843b3be1c4f254bca2f5b/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson",
-    };
-    axios(api)
-      .then((res) => {
-        setFeature(res.data.features);
-        console.log("__________", res.data.features, "++++++++++++++++++");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const [tempId, setTempId] = useState("");
+  const [data, setData] = useState(null);
 
   useEffect(() => {
+    const fetchPost = () => {
+      const api = {
+        method: "get",
+        url: "https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_8e9cae3f320843b3be1c4f254bca2f5b/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson",
+      };
+      axios(api)
+        .then((res) => {
+          setFeature(res.data.features);
+          console.log("__________", res.data.features, "++++++++++++++++++");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
     fetchPost();
   }, []);
 
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="flex mb-4 ">
       <div className="grid grid-cols-3 gap-2 m-2 " style={{ height: "80vh" }}>
@@ -132,7 +134,26 @@ const Distribution = () => {
                       ).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4">
-                      <button></button>
+                      <button
+                        className="bg-red-800 text-white p-2 rounded"
+                        onClick={() => {
+                          setTempId(feature.attributes.objectid);
+                          setData(feature.attributes);
+                          setShowModal(true);
+                          console.log(
+                            "__________________________",
+                            feature.attributes.objectid
+                          );
+                        }}
+                      >
+                        Detail
+                      </button>
+                      <Modal
+                        setShowModal={setShowModal}
+                        showModal={showModal}
+                        objid={tempId}
+                        data={data}
+                      />
                     </td>
                   </tr>
                 ))}
