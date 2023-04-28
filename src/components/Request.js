@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { CSVLink } from "react-csv";
 
 const Request = () => {
   const [features, setFeature] = useState([]);
+  const [searchText, setsearchText] = useState("");
 
   useEffect(() => {
     const fetchRequest = () => {
@@ -95,7 +97,7 @@ const Request = () => {
                 {/* <CSVLink filename={`traitement-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
                     features
                       .filter((feature) =>
-                        (feature.attributes.numero_colis + "").startsWith(
+                        (feature.attributes.School + "").startsWith(
                           searchText
                         )
                       ).map(f => (
