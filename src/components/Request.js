@@ -64,7 +64,7 @@ const Request = () => {
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
               <p className="text-base">Remaining/Pc</p>
-              <div className="flex gap-4 text-5xl font-semibold">
+              <div className="flex gap-4 text-5 xl font-semibold">
                 <GrPersonalComputer className="text-gray-600" />
                 350
               </div>

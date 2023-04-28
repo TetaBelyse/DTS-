@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { Pie } from "react-chartjs-2";
 import axios from "axios";
 import { CSVLink } from "react-csv";
+import Detailss from "../Modal/DetailModal";
 // import { Pie } from "react-chartjs-2";
 // import { Doughnut } from "react-chartjs-2";
 
@@ -21,6 +22,8 @@ const Claim = () => {
 
   const [feature, setFeature] = useState([]);
   const [searchText, setsearchText] = useState("");
+  const [tempId, setTempId] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchClaim = () => {
@@ -142,31 +145,32 @@ const Claim = () => {
                   placeholder="Search Reg Number"
                 />
 
-               <CSVLink filename={`List_of_Student_claim-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
-                    feature
-                      .filter((feature) =>
-                        (feature.attributes.reg_number + "").startsWith(
-                          searchText
-                        )
-                      ).map(f => (
-                        { ...f.attributes }
-                      ))
-                  }>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-                      />
-                    </svg>
-                  </CSVLink>
+                <CSVLink
+                  filename={`List_of_Student_claim-${new Date().toISOString()}.csv`}
+                  className="cursor-pointer"
+                  data={feature
+                    .filter((feature) =>
+                      (feature.attributes.reg_number + "").startsWith(
+                        searchText
+                      )
+                    )
+                    .map((f) => ({ ...f.attributes }))}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                    />
+                  </svg>
+                </CSVLink>
               </div>
               <div className="h-96 relative overflow-x-auto shadow-md sm:rounded-lg mt-2">
                 <table
@@ -239,12 +243,35 @@ const Claim = () => {
                           {feature?.attributes.problems}
                         </td>
                         <td className="px-6 py-4">
+                          {feature?.attributes.specify_other}
+                        </td>
+                        <td className="px-6 py-4">
+                          {feature?.attributes.enter_comments}
+                        </td>
+                        <td className="px-6 py-4">
                           {new Date(
-                            feature?.attributes.traitement_date
+                            feature?.attributes.dates
                           ).toLocaleDateString()}
                         </td>
                         <td className="px-6 py-4">
-                          {feature?.attributes.commentaire}
+                          <button
+                            className="bg-red-800 text-white p-2 rounded"
+                            onClick={() => {
+                              setShowModal(true);
+                              console.log(
+                                "_______________",
+                                feature?.attributes.OBJECTID
+                              );
+                              setTempId(feature?.attributes.OBJECTID);
+                            }}
+                          >
+                            modify
+                          </button>
+                          <Detailss
+                            setShowModal={setShowModal}
+                            showModal={showModal}
+                            objid={tempId}
+                          />
                         </td>
                       </tr>
                     ))}
