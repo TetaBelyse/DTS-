@@ -7,16 +7,16 @@ export const ModalComponents = ({ showModal, setShowModal, objid, data }) => {
 
   const baseUrl = `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_8e9cae3f320843b3be1c4f254bca2f5b/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson`;
 
-  const [selectData, setSelectData] = useState([]);
+  // const [selectData, setSelectData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   var tr = "";
   const fetchData = () => {
     axios(baseUrl).then((res) => {
       tr = res.data.features[0].attributes;
-      setSelectData(res.data.features[0].attributes);
+      // setSelectData(res.data.features[0].attributes);
       console.log("+++++++++++++++++++", res.data.features[0].attributes);
-        console.log("___________________", tr);
+      console.log("___________________", tr);
     });
   };
 

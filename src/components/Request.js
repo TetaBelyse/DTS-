@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { CSVLink } from "react-csv";
+import { GrPersonalComputer } from "react-icons/gr";
+import { FaTruck } from "react-icons/fa";
+import { FaUserGraduate } from "react-icons/fa";
+import { VscGitPullRequestCreate } from "react-icons/vsc";
+// import { CSVLink } from "react-csv";
 
 const Request = () => {
   const [features, setFeature] = useState([]);
-  const [searchText, setsearchText] = useState("");
+  // const [searchText, setsearchText] = useState("");
 
   useEffect(() => {
     const fetchRequest = () => {
@@ -32,40 +36,37 @@ const Request = () => {
           <div className="grid w-full grid-cols-5 gap-2 px-2 text-black">
             <div className="flex flex-col items-center w-full  py-3 text-gray-700 bg-white border">
               <p className="text-base">PO</p>
-              <div className="flex gap-4 text-7xl font-semibold">
-                {/* <GrDocumentText className="text-gray-700" />
-                  {entransitStatus +
-                    livreClientStatus +
-                    livreStatus +
-                    enregistreStatus} */}
+              <div className="flex gap-2 text-5xl font-semibold">
+                <GrPersonalComputer className="text-gray-700" />
+                700
               </div>
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
               <p className="text-base">Request</p>
-              <div className="flex gap-4 text-7xl font-semibold">
-                {/* <RiStockFill className="text-gray-700" />
-                  {enregistreStatus} */}
+              <div className="flex gap-4 text-5xl font-semibold">
+                <VscGitPullRequestCreate className="text-gray-700" />
+                700
               </div>
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
               <p className="text-base">Delivered/school</p>
-              <div className="flex gap-4 text-7xl font-semibold">
-                {/* <AiFillCar className="text-gray-700" />
-                  {entransitStatus} */}
+              <div className="flex gap-4 text-5xl font-semibold">
+                <FaTruck className="text-gray-700" />
+                500
               </div>
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
               <p className="text-base">Distributed/student</p>
-              <div className="flex gap-4 text-7xl font-semibold">
-                {/* <GiHouse className="text-gray-700" />
-                  {livreStatus} */}
+              <div className="flex gap-4 text-5xl font-semibold">
+                <FaUserGraduate className="text-gray-700" />
+                150
               </div>
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
               <p className="text-base">Remaining/Pc</p>
-              <div className="flex gap-4 text-7xl font-semibold">
-                {/* <FaPeopleCarry className="text-gray-700" />
-                  {livreClientStatus} */}
+              <div className="flex gap-4 text-5xl font-semibold">
+                <GrPersonalComputer className="text-gray-600" />
+                350
               </div>
             </div>
           </div>
