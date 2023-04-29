@@ -50,7 +50,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                 {/* {/header/} */}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl text-gray-600 font-semibold">
-                    Modifier le statut
+                    Modify the status
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-red-500 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -86,7 +86,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       htmlFor="dedommage"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
-                      Dédommagé
+                      Pending
                     </label>
                   </div>
                   <div className="flex items-center pl-4 my-4 border border-gray-200 rounded dark:border-gray-700">
@@ -107,12 +107,12 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       htmlFor="indemnise"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
-                      Indemnisé
+                      Fixed
                     </label>
                   </div>
                   <div className="relative p-4 flex-auto ml-1">
                     <p className="my-4 text-slate-500 text-gray-600 font-semibold text-lg leading-relaxed">
-                      Modifier la date
+                      Change the date
                     </p>
                     <div className="relative max-w-sm">
                       <div className=" w-full">
@@ -151,7 +151,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
-                    Fermer
+                    Close
                   </button>
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -166,7 +166,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       setShowModal();
                     }}
                   >
-                    Enregistrer
+                    Comfirm
                   </button>
                 </div>
               </div>
