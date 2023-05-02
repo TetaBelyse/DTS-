@@ -198,6 +198,9 @@ const Claim = () => {
                         Email
                       </th>
                       <th scope="col" className="px-6 py-3">
+                        Status
+                      </th>
+                      <th scope="col" className="px-6 py-3">
                         Problem
                       </th>
                       <th scope="col" className="px-6 py-3">
@@ -210,7 +213,7 @@ const Claim = () => {
                         Date
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Status
+                        Action
                       </th>
                     </tr>
                   </thead>
@@ -235,6 +238,9 @@ const Claim = () => {
                         </td>
                         <td className="px-6 py-4">
                           {feature?.attributes.telephone}
+                        </td>
+                        <td className="px-6 py-4">
+                          {feature?.attributes.email}
                         </td>
                         <td className="px-6 py-4">
                           {feature?.attributes.email}

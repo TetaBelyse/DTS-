@@ -64,7 +64,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                 {/* {/body/} */}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-gray-600 font-semibold text-lg leading-relaxed">
-                    Etat de traitement de réclamation
+                  Complaint processing status
                   </p>
 
                   <div className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
@@ -86,7 +86,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       htmlFor="dedommage"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
-                      Pending
+                      Open
                     </label>
                   </div>
                   <div className="flex items-center pl-4 my-4 border border-gray-200 rounded dark:border-gray-700">
@@ -107,7 +107,51 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       htmlFor="indemnise"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
+                      Pending
+                    </label>
+                  </div>
+                  <div className="flex items-center pl-4 my-4 border border-gray-200 rounded dark:border-gray-700">
+                    <input
+                      id="1"
+                      type="radio"
+                      value="dedommage"
+                      name="radio"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      onChange={(e) => {
+                        e.target.value === ""
+                          ? setSelectTraitemnet("")
+                          : setSelectTraitemnet(e.target.value);
+                        // console.log("____________", selectTraitemnet);
+                        // console.log("the id---------------------", objid)
+                      }}
+                    />
+                    <label
+                      htmlFor="dedommage"
+                      className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
                       Fixed
+                    </label>
+                  </div>
+                  <div className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                    <input
+                      id="1"
+                      type="radio"
+                      value="dedommage"
+                      name="radio"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      onChange={(e) => {
+                        e.target.value === ""
+                          ? setSelectTraitemnet("")
+                          : setSelectTraitemnet(e.target.value);
+                        // console.log("____________", selectTraitemnet);
+                        // console.log("the id---------------------", objid)
+                      }}
+                    />
+                    <label
+                      htmlFor="dedommage"
+                      className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Closed
                     </label>
                   </div>
                   <div className="relative p-4 flex-auto ml-1">
