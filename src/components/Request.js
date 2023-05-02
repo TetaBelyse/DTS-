@@ -4,11 +4,11 @@ import { GrPersonalComputer } from "react-icons/gr";
 import { FaTruck } from "react-icons/fa";
 import { FaUserGraduate } from "react-icons/fa";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
-// import { CSVLink } from "react-csv";
+import { CSVLink } from "react-csv";
 
 const Request = () => {
   const [features, setFeature] = useState([]);
-  // const [searchText, setsearchText] = useState("");
+  const [searchText, setsearchText] = useState("");
 
   useEffect(() => {
     const fetchRequest = () => {
@@ -88,16 +88,16 @@ const Request = () => {
                 <input
                   type="text"
                   id="table-search"
-                  // value={searchText}
-                  // onChange={(e) => setsearchText(e.target.value)}
+                  value={searchText}
+                  onChange={(e) => setsearchText(e.target.value)}
                   className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search School"
                 />
 
-                {/* <CSVLink filename={`traitement-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
+                {/* <CSVLink filename={`school-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
                     features
                       .filter((feature) =>
-                        (feature.attributes.School + "").startsWith(
+                        (feature.attributes.school + "").startsWith(
                           searchText
                         )
                       ).map(f => (

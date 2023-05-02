@@ -140,7 +140,7 @@ export const ModalComponents = ({ showModal, setShowModal, objid, data }) => {
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   <button
-                    className="text-grey-900 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-red-700 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >

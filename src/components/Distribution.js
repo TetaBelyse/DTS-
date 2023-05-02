@@ -30,8 +30,9 @@ const Distribution = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="flex mb-4 ">
-      <div className="grid grid-cols-3 gap-2 m-2 " style={{ height: "80vh" }}>
-        <div className="col-span-1 overflow-scroll">
+      <div className="grid grid-cols-3 gap-2 m-2 " 
+      style={{ height: "80vh" }}>
+        <div className="col-span-1 overflow-scroll h-full">
           <iframe
             title="Dashboard"
             width="100%"
@@ -40,7 +41,7 @@ const Distribution = () => {
             src="https://survey123.arcgis.com/share/392f6f57676140459b57bf991f665dbc?portalUrl=https://esri-rw.maps.arcgis.com"
           ></iframe>
         </div>
-        <div className="col-span-2 ">
+        <div className="col-span-2 overflow-scroll ">
           <div className="flex items-center justify-end  gap-3 pr-10 pb-5">
             <input
               type="text"
@@ -50,33 +51,33 @@ const Distribution = () => {
               className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search Reg number"
             />
-            
 
-            <CSVLink filename={`Student-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
-                    features
-                      .filter((feature) =>
-                        (feature.attributes.registration_number + "").startsWith(
-                          searchText
-                        )
-                      ).map(f => (
-                        { ...f.attributes }
-                      ))
-                  }>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-                      />
-                    </svg>
-                  </CSVLink>
+            <CSVLink
+              filename={`Student-${new Date().toISOString()}.csv`}
+              className="cursor-pointer"
+              data={features
+                .filter((feature) =>
+                  (feature.attributes.registration_number + "").startsWith(
+                    searchText
+                  )
+                )
+                .map((f) => ({ ...f.attributes }))}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                />
+              </svg>
+            </CSVLink>
           </div>
           <div className="overflow-scroll">
             <table
