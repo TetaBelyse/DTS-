@@ -37,21 +37,21 @@ const Request = () => {
               <p className="text-base">PO</p>
               <div className="flex gap-2 text-5xl font-semibold">
                 <GrPersonalComputer className="text-gray-700" />
-                700
+             
               </div>
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
               <p className="text-base">Request</p>
               <div className="flex gap-4 text-5xl font-semibold">
                 <VscGitPullRequestCreate className="text-gray-700" />
-                700
+                
               </div>
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
               <p className="text-base">Delivered/school</p>
               <div className="flex gap-4 text-5xl font-semibold">
                 <FaTruck className="text-gray-700" />
-                500
+                
               </div>
             </div>
             <div className="flex flex-col items-center w-full py-3 text-gray-700 bg-white border">
