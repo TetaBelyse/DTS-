@@ -53,7 +53,7 @@ const Distribution = () => {
             />
 
             <CSVLink
-              filename={`Student-${new Date().toISOString()}.csv`}
+              filename={`List_of_Distribution_Student-${new Date().toISOString()}.csv`}
               className="cursor-pointer"
               data={features
                 .filter((feature) =>
@@ -119,7 +119,13 @@ const Distribution = () => {
                 </tr>
               </thead>
               <tbody>
-                {features.map((feature, index) => (
+                {features
+                .filter((feature) =>
+                (feature.attributes.registration_number + "").startsWith(
+                  searchText
+                )
+              )
+                .map((feature, index) => (
                   <tr
                     key={index}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
