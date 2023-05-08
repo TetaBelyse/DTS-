@@ -104,64 +104,7 @@ const Claim = () => {
       <div>
         <div className="bg-gray-100">
           <div className="m-4 flex-auto">
-            <div className="flex items-center w-full gap-8 px-2 mx-2 mt-3 border border-gray-200">
-              <div className="w-96">
-                <p className="text-xl text-gray-600">Claim Table</p>
-              </div>
-              <div className="flex ml-14">
-                <div className="flex items-center w-80 m-2">
-                  <label htmlFor="floatingInput" className="text-gray-900 px-2">
-                    Date
-                  </label>
-                  {/* <input
-                  type="date"
-                  className="form-control w-full px-3 py-2 text-base font-normal text-gray-600 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                  placeholder="Select a date"
-                  // value={filterByDate}
-                  onChange={(e) => {
-                    if (e.target.value === "") {
-                      setStatusdateData1("");
-                    } else {
-                      setStatusdateData1(
-                        `+and+created_date%3D%27${e.target.value}%27`
-                      );
-                    }
-                  }}
-                /> */}
-
-                  {/* <button
-                  className="datepicker-toggle-button"
-                  data-mdb-toggle="datepicker"
-                >
-                  <i className="fas fa-calendar datepicker-toggle-icon"></i>
-                </button> */}
-                </div>
-
-                {/* <div className="flex items-center w-80 m-2">
-                <input
-                  type="date"
-                  className="form-control w-full px-3 py-2 text-base font-normal text-gray-600 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                  placeholder="Select a date"
-                  onChange={(e) => {
-                    if (e.target.value === "") {
-                      setStatusdateData1("");
-                    } else {
-                      setStatusdateData1(
-                        `+and+created_date%3D%27${e.target.value}%27`
-                      );
-                    }
-                  }}
-                /> */}
-                <label
-                  htmlFor="floatingInput"
-                  className="text-gray-700"
-                ></label>
-                <button
-                  className="datepicker-toggle-button"
-                  data-mdb-toggle="datepicker"
-                ></button>
-              </div>
-            </div>
+      
           </div>
         </div>
 
@@ -226,7 +169,7 @@ const Claim = () => {
                   id="myTable"
                   className="w-full text-sm text-left text-gray-500 dark:text-gray-400"
                 >
-                  <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
                     <tr>
                       <th scope="col" className="px-6 py-3">
                         Reg Number
