@@ -5,11 +5,15 @@ import Delivery from '../pages/delivery'
 import Distribution from '../pages/distribution'
 import Claim from '../pages/claim'
 import Dashboard from '../pages/dashboard'
+import SignIn from '../Authentications/SignIn'
 
 const AllRoutes = () => {
     return (
         <Routes>
             <Route
+                path='/'
+                element={< SignIn />} />
+                <Route
                 path='/dashboard'
                 element={< Dashboard />} />
             <Route
