@@ -2,7 +2,7 @@ import logo from "../logo.png";
 
 const Navbar = () => {
   return (
-    <div className="bg-slate-700 text-white flex justify-between items-center">
+    <div className="bg-slate-700 text-white flex justify-between items-center w-screen">
       <div>
         <img src={logo} className="h-16 bg-white" />
       </div>
