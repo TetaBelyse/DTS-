@@ -5,7 +5,7 @@ import { CSVLink } from "react-csv";
 
 const Distribution = () => {
   const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
+  // const username = localStorage.getItem("username");
 
   const [features, setFeature] = useState([]);
   const [searchText, setsearchText] = useState("");

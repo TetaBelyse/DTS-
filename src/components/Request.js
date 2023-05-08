@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Request = () => {
   const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
+  // const username = localStorage.getItem("username");
 
   const [features, setFeature] = useState([]);
   const [searchText, setsearchText] = useState("");
@@ -26,7 +26,7 @@ const Request = () => {
         });
     };
     fetchRequest();
-  }, []);
+  }, [token]);
 
   return (
     <div style={{ height: "auto" }} className="w-full">
@@ -42,7 +42,7 @@ const Request = () => {
                 width="100%"
                 height="100%"
                 allowFullScreen
-                src="https://survey123.arcgis.com/share/bc45dd156a764d88bab7fd77d32dda9d?portalUrl=https://esri-rw.maps.arcgis.com"
+                src={`https://survey123.arcgis.com/share/bc45dd156a764d88bab7fd77d32dda9d?portalUrl=https://esri-rw.maps.arcgis.com`}
               ></iframe>
             </div>
 
