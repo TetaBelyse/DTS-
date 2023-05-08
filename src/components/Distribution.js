@@ -30,8 +30,7 @@ const Distribution = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="flex mb-4 ">
-      <div className="grid grid-cols-3 gap-2 m-2 " 
-      style={{ height: "80vh" }}>
+      <div className="grid grid-cols-3 gap-2 m-2 " style={{ height: "80vh" }}>
         <div className="col-span-1 overflow-scroll h-full">
           <iframe
             title="Dashboard"
@@ -120,64 +119,68 @@ const Distribution = () => {
               </thead>
               <tbody>
                 {features
-                .filter((feature) =>
-                (feature.attributes.registration_number + "").startsWith(
-                  searchText
-                )
-              )
-                .map((feature, index) => (
-                  <tr
-                    key={index}
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                  >
-                    <td className="px-6 py-4 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {feature?.attributes.objectid}
-                    </td>
+                  .filter((feature) =>
+                    (feature.attributes.registration_number + "").startsWith(
+                      searchText
+                    )
+                  )
+                  .map((feature, index) => (
+                    <tr
+                      key={index}
+                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                    >
+                      <td className="px-6 py-4 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {feature?.attributes.objectid}
+                      </td>
 
-                    <th scope="row" className="px-6 py-4 ">
-                      {feature?.attributes.registration_number}
-                    </th>
-                    <td className="px-6 py-4">
-                      {feature?.attributes.student_name}
-                    </td>
-                    <td className="px-6 py-4">{feature?.attributes.school}</td>
-                    <td className="px-6 py-4">{feature?.attributes.faculty}</td>
-                    <td className="px-6 py-4">
-                      {feature?.attributes.telphone}
-                    </td>
-                    <td className="px-6 py-4">{feature?.attributes.email}</td>
-                    <td className="px-6 py-4">
-                      {feature?.attributes.bar_code}
-                    </td>
-                    <td className="px-6 py-4">
-                      {new Date(
-                        feature?.attributes.CreationDate
-                      ).toLocaleDateString()}
-                    </td>
-                    <td className="px-6 py-4">
-                      <button
-                        className="bg-red-800 text-white p-2 rounded"
-                        onClick={() => {
-                          setTempId(feature.attributes.objectid);
-                          setData(feature.attributes);
-                          setShowModal(true);
-                          console.log(
-                            "__________________________",
-                            feature.attributes.objectid
-                          );
-                        }}
-                      >
-                        Detail
-                      </button>
-                      <Modal
-                        setShowModal={setShowModal}
-                        showModal={showModal}
-                        objid={tempId}
-                        data={data}
-                      />
-                    </td>
-                  </tr>
-                ))}
+                      <th scope="row" className="px-6 py-4 ">
+                        {feature?.attributes.registration_number}
+                      </th>
+                      <td className="px-6 py-4">
+                        {feature?.attributes.student_name}
+                      </td>
+                      <td className="px-6 py-4">
+                        {feature?.attributes.school}
+                      </td>
+                      <td className="px-6 py-4">
+                        {feature?.attributes.faculty}
+                      </td>
+                      <td className="px-6 py-4">
+                        {feature?.attributes.telphone}
+                      </td>
+                      <td className="px-6 py-4">{feature?.attributes.email}</td>
+                      <td className="px-6 py-4">
+                        {feature?.attributes.bar_code}
+                      </td>
+                      <td className="px-6 py-4">
+                        {new Date(
+                          feature?.attributes.CreationDate
+                        ).toLocaleDateString()}
+                      </td>
+                      <td className="px-6 py-4">
+                        <button
+                          className="bg-red-800 text-white p-2 rounded"
+                          onClick={() => {
+                            setTempId(feature.attributes.objectid);
+                            setData(feature.attributes);
+                            setShowModal(true);
+                            console.log(
+                              "__________________________",
+                              feature.attributes.objectid
+                            );
+                          }}
+                        >
+                          Detail
+                        </button>
+                        <Modal
+                          setShowModal={setShowModal}
+                          showModal={showModal}
+                          objid={tempId}
+                          data={data}
+                        />
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
