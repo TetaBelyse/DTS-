@@ -16,37 +16,39 @@ const SignIn = () => {
     const password = passwordRef.current.value;
 
     if (!username || !password) {
-      toast.warn('Username and password should not be empty');
+      toast.warn("Username and password should not be empty");
       return;
     }
 
-    const params = new URLSearchParams()
-    params.append('username', username)
-    params.append('password', password)
-    params.append('referer', 'https://gis.kigalicity.gov.rw/portal/')
-    params.append('client', 'https://gis.kigalicity.gov.rw/portal/')
-    params.append('expiration', '3600')
+    const params = new URLSearchParams();
+    params.append("username", username);
+    params.append("password", password);
+    params.append("referer", "https://www.arcgis.com");
+    params.append("client", "https://www.arcgis.com");
+    params.append("expiration", "3600");
 
-    const URL = 'https://gis.kigalicity.gov.rw/portal/sharing/rest/generateToken?f=json'
+    const URL = "https://www.arcgis.com/sharing/generateToken?f=json";
 
     const config = {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
-    axios.post(URL, params, config).then((response) => {
-      if (response.data.error) {
-        toast.error(response.data.error.message);
-      }else{
-        localStorage.setItem('token', response.data.token);
-        toast.success("You have successfully login");
-        navigate("/dashboard", { replace: true });
-      }
-      
-    }).catch((error) => {
-      toast.error(error.message);
-    })
+    axios
+      .post(URL, params, config)
+      .then((response) => {
+        if (response.data.error) {
+          toast.error(response.data.error.message);
+        } else {
+          localStorage.setItem("token", response.data.token);
+          toast.success("You have successfully login");
+          navigate("/dashboard", { replace: true });
+        }
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -111,13 +113,13 @@ const SignIn = () => {
                         Welcome to DTS
                       </h4>
                       <div className="flex justify-center items-center">
-                      <figure className="w-[500px] h-[400] relative rounded-md drop-shadow-lg">
-                        <img
-                          className="w-full object-cover rounded-tl-md rounded-tr-md rounded-br-md rounded-bl-md "
-                          src={require("../logo.png")}
-                          alt="logo"
-                        />
-                      </figure>
+                        <figure className="w-[500px] h-[400] relative rounded-md drop-shadow-lg">
+                          <img
+                            className="w-full object-cover rounded-tl-md rounded-tr-md rounded-br-md rounded-bl-md "
+                            src={require("../logo.png")}
+                            alt="logo"
+                          />
+                        </figure>
                       </div>
                     </div>
                   </div>

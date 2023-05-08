@@ -8,6 +8,8 @@ import { Pie } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Claim = () => {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
   // const [selectDedommage, setSelectDedommage] = useState(0);
   // const [selectIndemnises, setSetectIndemnises] = useState(0);
 
@@ -26,7 +28,7 @@ const Claim = () => {
     const fetchReceived = () => {
       axios
         .get(
-          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Received%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=`
+          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Received%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=${token}`
         )
         .then((res) => {
           setReceived(res.data.count);
@@ -36,7 +38,7 @@ const Claim = () => {
     const fetchPending = () => {
       axios
         .get(
-          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Pending%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=`
+          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Pending%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=${token}`
         )
         .then((res) => {
           setPending(res.data.count);
@@ -46,7 +48,7 @@ const Claim = () => {
     const fetchfixed = () => {
       axios
         .get(
-          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Fixed%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=`
+          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Fixed%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=${token}`
         )
         .then((res) => {
           setFixed(res.data.count);
@@ -56,7 +58,7 @@ const Claim = () => {
     const fetchClose = () => {
       axios
         .get(
-          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Close%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=`
+          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=Status%3D%27Close%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=true&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=${token}`
         )
         .then((res) => {
           setClosed(res.data.count);
@@ -66,7 +68,7 @@ const Claim = () => {
     const fetchClaim = () => {
       axios
         .get(
-          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json`
+          `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=json&token=${token}`
         )
         .then((response) => {
           setFeature(response.data.features);
@@ -103,9 +105,7 @@ const Claim = () => {
     <>
       <div>
         <div className="bg-gray-100">
-          <div className="m-4 flex-auto">
-      
-          </div>
+          <div className="m-4 flex-auto"></div>
         </div>
 
         <div className="w-full bg-gray-400 h-5 mt-4 mb-10">
@@ -204,71 +204,75 @@ const Claim = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {feature
-                      .filter((feature) =>
-                        (feature.attributes.reg_number + "").startsWith(
-                          searchText
+                    {feature ? (
+                      feature
+                        .filter((feature) =>
+                          (feature.attributes.reg_number + "").startsWith(
+                            searchText
+                          )
                         )
-                      )
-                      .map((feature, index) => (
-                        <tr
-                          key={index}
-                          className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                        >
-                          <td className=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {feature?.attributes.reg_number}
-                          </td>
-                          <th scope="row" className="px-6 py-4 ">
-                            {feature?.attributes.serial_number}
-                          </th>
-                          <td className="px-6 py-4">
-                            {feature?.attributes.schools}
-                          </td>
-                          <td className="px-6 py-4">
-                            {" "}
-                            {feature?.attributes.name}
-                          </td>
-                          <td className="px-6 py-4">
-                            {feature?.attributes.telephone}
-                          </td>
-                          <td className="px-6 py-4">
-                            {feature?.attributes.email}
-                          </td>
-                          <td className="px-6 py-4">
-                            {feature?.attributes.Status}
-                          </td>
-                          <td className="px-6 py-4">
-                            {new Date(
-                              feature?.attributes.dates
-                            ).toLocaleDateString()}
-                          </td>
-                          <td className="px-6 py-4">
-                            {new Date(
-                              feature?.attributes.EditDate
-                            ).toLocaleDateString()}
-                          </td>
-                          <td className="px-6 py-4">
-                            <button
-                              className="bg-red-800 text-white p-2 rounded"
-                              onClick={() => {
-                                setShowModal(true);
-                                console.log(
-                                  "_____",
-                                  feature?.attributes.OBJECTID
-                                );
-                                setTempId(feature?.attributes.OBJECTID);
-                              }}
-                            >
-                              modify
-                            </button>
-                            <Detailss
-                              setShowModal={setShowModal}
-                              showModal={showModal}
-                              objid={tempId}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                        .map((feature, index) => (
+                          <tr
+                            key={index}
+                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                          >
+                            <td className=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                              {feature?.attributes.reg_number}
+                            </td>
+                            <th scope="row" className="px-6 py-4 ">
+                              {feature?.attributes.serial_number}
+                            </th>
+                            <td className="px-6 py-4">
+                              {feature?.attributes.schools}
+                            </td>
+                            <td className="px-6 py-4">
+                              {" "}
+                              {feature?.attributes.name}
+                            </td>
+                            <td className="px-6 py-4">
+                              {feature?.attributes.telephone}
+                            </td>
+                            <td className="px-6 py-4">
+                              {feature?.attributes.email}
+                            </td>
+                            <td className="px-6 py-4">
+                              {feature?.attributes.Status}
+                            </td>
+                            <td className="px-6 py-4">
+                              {new Date(
+                                feature?.attributes.dates
+                              ).toLocaleDateString()}
+                            </td>
+                            <td className="px-6 py-4">
+                              {new Date(
+                                feature?.attributes.EditDate
+                              ).toLocaleDateString()}
+                            </td>
+                            <td className="px-6 py-4">
+                              <button
+                                className="bg-red-800 text-white p-2 rounded"
+                                onClick={() => {
+                                  setShowModal(true);
+                                  console.log(
+                                    "_____",
+                                    feature?.attributes.OBJECTID
+                                  );
+                                  setTempId(feature?.attributes.OBJECTID);
+                                }}
+                              >
+                                modify
+                              </button>
+                              <Detailss
+                                setShowModal={setShowModal}
+                                showModal={showModal}
+                                objid={tempId}
+                              />
+                            </td>
+                          </tr>
+                        ))
+                    ) : (
+                      <p>loading</p>
+                    )}
                   </tbody>
                 </table>
               </div>
