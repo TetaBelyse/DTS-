@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// import { CSVLink } from "react-csv";
+import { CSVLink } from "react-csv";
 
 const Request = () => {
   const token = localStorage.getItem("token");
@@ -57,10 +57,10 @@ const Request = () => {
                   placeholder="Search School"
                 />
 
-                {/* <CSVLink filename={`school-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
+                <CSVLink filename={`School_request-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
                     features
                       .filter((feature) =>
-                        (feature.attributes.school + "").startsWith(
+                        (feature.attributes.School + "").startsWith(
                           searchText
                         )
                       ).map(f => (
@@ -81,7 +81,7 @@ const Request = () => {
                         d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
                       />
                     </svg>
-                  </CSVLink> */}
+                  </CSVLink>
               </div>
 
               <table
@@ -115,7 +115,13 @@ const Request = () => {
                 </thead>
                 <tbody>
                   {features ? (
-                    features.map((feature, index) => (
+                    features
+                    .filter((feature) =>
+                    (feature.attributes.School+ "").startsWith(
+                      searchText
+                    )
+                  )
+                    .map((feature, index) => (
                       <tr
                         key={index}
                         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"

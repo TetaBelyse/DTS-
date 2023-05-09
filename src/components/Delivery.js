@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { GrPersonalComputer } from "react-icons/gr";
 import { FaTruck } from "react-icons/fa";
-// import { CSVLink } from "react-csv";
+import { CSVLink } from "react-csv";
 
 const Delivery = () => {
   const token = localStorage.getItem("token");
@@ -99,12 +99,12 @@ const Delivery = () => {
                   placeholder="Search School"
                 />
 
-                {/* <CSVLink
-                  filename={`traitement-${new Date().toISOString()}.csv`}
+                <CSVLink
+                  filename={`Delivery_list-${new Date().toISOString()}.csv`}
                   className="cursor-pointer"
                   data={features
                     .filter((feature) =>
-                      (feature.attributes.School + "").startsWith(searchText)
+                      (feature.attributes.school + "").startsWith(searchText)
                     )
                     .map((f) => ({ ...f.attributes }))}
                 >
@@ -122,7 +122,7 @@ const Delivery = () => {
                       d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
                     />
                   </svg>
-                </CSVLink> */}
+                </CSVLink>
               </div>
               <div className="overflow-scroll">
                 <table
@@ -161,7 +161,7 @@ const Delivery = () => {
                     {features ? (
                       features
                         .filter((feature) =>
-                          (feature.attributes.School + "").startsWith(
+                          (feature.attributes.school + "").startsWith(
                             searchText
                           )
                         )
