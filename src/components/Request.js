@@ -115,34 +115,38 @@ const Request = () => {
                 </thead>
                 <tbody>
                   {features ? (
-                    features.map((feature, index) => (
-                      <tr
-                        key={index}
-                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                      >
-                        <td className="px-6 py-4">
-                          {feature?.attributes.School}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.Total_number_of_computers}
-                        </td>
-                        <td className="px-6 py-4 ">
-                          {feature?.attributes.Specification}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i3}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i5}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i7_8GB}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i7_16GB}
-                        </td>
-                      </tr>
-                    ))
+                    features
+                      .filter((feature) =>
+                        (feature.attributes.School + "").startsWith(searchText)
+                      )
+                      .map((feature, index) => (
+                        <tr
+                          key={index}
+                          className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                        >
+                          <td className="px-6 py-4 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {feature?.attributes.School}
+                          </td>
+                          <td className="px-6 py-4">
+                            {feature?.attributes.Total_number_of_computers}
+                          </td>
+                          <td className="px-6 py-4 ">
+                            {feature?.attributes.Specification}
+                          </td>
+                          <td className="px-6 py-4">
+                            {feature?.attributes.specifation_i3}
+                          </td>
+                          <td className="px-6 py-4">
+                            {feature?.attributes.specifation_i5}
+                          </td>
+                          <td className="px-6 py-4">
+                            {feature?.attributes.specifation_i7_8GB}
+                          </td>
+                          <td className="px-6 py-4">
+                            {feature?.attributes.specifation_i7_16GB}
+                          </td>
+                        </tr>
+                      ))
                   ) : (
                     <p>loading</p>
                   )}

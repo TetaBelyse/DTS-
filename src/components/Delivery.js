@@ -6,7 +6,7 @@ import { FaTruck } from "react-icons/fa";
 
 const Delivery = () => {
   const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
+  // const username = localStorage.getItem("username");
 
   const [features, setFeature] = useState([]);
   const [searchText, setsearchText] = useState("");
@@ -161,7 +161,7 @@ const Delivery = () => {
                     {features ? (
                       features
                         .filter((feature) =>
-                          (feature.attributes.School + "").startsWith(
+                          (feature.attributes.school + "").startsWith(
                             searchText
                           )
                         )

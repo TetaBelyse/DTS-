@@ -6,39 +6,32 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
   const [selectTraitemnet, setSelectTraitemnet] = useState("");
 
   const handSubmit = () => {
-    var myHeaders = new Headers();
-    // myHeaders.append("Cookie", "AGS_ROLES=vOFRhNO3JttnRuR1Vry9Ypwkvh4y89MAVVXvJBryltkUhymsjywuPXrE0ytBkIiFQl2CjngesmgbWDRt49pB8BsvNWXqu+hJ7OWyiP4wK3wX7B2SM0iTFBk5P4eWzXBu");
-
-    // var myDate: any = new Date();
-    // var myEpoch: any = myDate.getTime() / 1000.0;
-    // setSelectDate(myEpoch)
-    // console.log(objid, selectTraitemnet, selectTraitemnet2, selectDate)
-    /////////////////////////////////////////////////////////
-
     var formdata = new FormData();
     formdata.append(
-      "updates",
-      `[{\"attributes\":{\"OBJECTID\":${objid},\"traitement_reclamation\":\"${selectTraitemnet}\",\"traitement_date\":${selectDate}}}]`
+      "features",
+      `[{\n\"attributes\": {\n\"objectid\": ${objid},\n\"Status\": \"${selectTraitemnet}\",\n\"EditDate\": \"${selectDate}\"\n}\n}]`
     );
+    formdata.append("rollbackOnFailure", "true");
     formdata.append("f", "pjson");
-    formdata.append("", "");
+    formdata.append(
+      "token",
+      "SIK8mbI06fmAOMot1Z1j95LdGbym2KW_z9PoWMHWAhgeVUmTnGKAqbrfiBC-yAL331flQSnDs98idiZr9AFRaEfND3NBXz-dxSpJsyryqUU9ea2mB1H5dJs9uMzGUY9_EM5nRb4YngKCa4rLv4pmoUFNEP0Lqr9w-usbdJ4PAajqMvQou2YFYbqcvV77LapdvVnIBOHvFZu0IHVBN0vLx8DCLvMQcZ1mvc_oKoQkl_hdXlHAHtO9BYxIz7twUh6D"
+    );
 
     var requestOptions = {
       method: "POST",
-      headers: myHeaders,
       body: formdata,
       redirect: "follow",
     };
 
     fetch(
-      "https://geodata.arpce.cg/server/rest/services/livraison_colis/FeatureServer/2/applyEdits?token=i_K6hE6LH6WkSwss3aKp_SATeyzMUm-WV3Kp6XnMPrbdrK5FZeqef7j0NlJ2NfkGGUkdAYkfvjAwyebO4z_bNNqwY9Bj457h9zdl6zOCc5AUNCBiIlp-wjo4ca2epyxmUJRUXKVA0AIbUg4UigIb_zaHyfhsvUxSlsEihjtlWPXaY8ux2k5oxkc4WlFKHMbOZe6o786g3Aut-c6aFrZ6Vw..",
+      "https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/updateFeatures?token=SIK8mbI06fmAOMot1Z1j95LdGbym2KW_z9PoWMHWAhgeVUmTnGKAqbrfiBC-yAL331flQSnDs98idiZr9AFRaEfND3NBXz-dxSpJsyryqUU9ea2mB1H5dJs9uMzGUY9_EM5nRb4YngKCa4rLv4pmoUFNEP0Lqr9w-usbdJ4PAajqMvQou2YFYbqcvV77LapdvVnIBOHvFZu0IHVBN0vLx8DCLvMQcZ1mvc_oKoQkl_hdXlHAHtO9BYxIz7twUh6D",
       requestOptions
     )
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   };
-
   return (
     <>
       {showModal ? (
@@ -64,26 +57,26 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                 {/* {/body/} */}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-gray-600 font-semibold text-lg leading-relaxed">
-                  Complaint processing status
+                    Complaint processing status
                   </p>
 
                   <div className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
                     <input
                       id="1"
                       type="radio"
-                      value="dedommage"
+                      value="Open"
                       name="radio"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                       onChange={(e) => {
                         e.target.value === ""
                           ? setSelectTraitemnet("")
                           : setSelectTraitemnet(e.target.value);
-                        // console.log("____________", selectTraitemnet);
+                        console.log("____________", selectTraitemnet);
                         // console.log("the id---------------------", objid)
                       }}
                     />
                     <label
-                      htmlFor="dedommage"
+                      htmlFor="Open"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                       Open
@@ -93,7 +86,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                     <input
                       id="2"
                       type="radio"
-                      value="indemnise"
+                      value="Pending"
                       name="radio"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                       onChange={(e) => {
@@ -104,7 +97,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       }}
                     />
                     <label
-                      htmlFor="indemnise"
+                      htmlFor="Pending"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                       Pending
@@ -114,7 +107,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                     <input
                       id="1"
                       type="radio"
-                      value="dedommage"
+                      value="Fixed"
                       name="radio"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                       onChange={(e) => {
@@ -126,7 +119,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       }}
                     />
                     <label
-                      htmlFor="dedommage"
+                      htmlFor="Fixed"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                       Fixed
@@ -136,7 +129,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                     <input
                       id="1"
                       type="radio"
-                      value="dedommage"
+                      value="Close"
                       name="radio"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                       onChange={(e) => {
@@ -148,7 +141,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
                       }}
                     />
                     <label
-                      htmlFor="dedommage"
+                      htmlFor="Close"
                       className="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                       Closed
