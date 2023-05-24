@@ -5,6 +5,8 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
   const [selectDate, setSelectDate] = useState("");
   const [selectTraitemnet, setSelectTraitemnet] = useState("");
 
+  const token = localStorage.getItem("token");
+
   const handSubmit = () => {
     var formdata = new FormData();
     formdata.append(
@@ -13,10 +15,6 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
     );
     formdata.append("rollbackOnFailure", "true");
     formdata.append("f", "pjson");
-    formdata.append(
-      "token",
-      "SIK8mbI06fmAOMot1Z1j95LdGbym2KW_z9PoWMHWAhgeVUmTnGKAqbrfiBC-yAL331flQSnDs98idiZr9AFRaEfND3NBXz-dxSpJsyryqUU9ea2mB1H5dJs9uMzGUY9_EM5nRb4YngKCa4rLv4pmoUFNEP0Lqr9w-usbdJ4PAajqMvQou2YFYbqcvV77LapdvVnIBOHvFZu0IHVBN0vLx8DCLvMQcZ1mvc_oKoQkl_hdXlHAHtO9BYxIz7twUh6D"
-    );
 
     var requestOptions = {
       method: "POST",
@@ -25,7 +23,7 @@ export default function ModalComponent({ showModal, setShowModal, objid }) {
     };
 
     fetch(
-      "https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/updateFeatures?token=SIK8mbI06fmAOMot1Z1j95LdGbym2KW_z9PoWMHWAhgeVUmTnGKAqbrfiBC-yAL331flQSnDs98idiZr9AFRaEfND3NBXz-dxSpJsyryqUU9ea2mB1H5dJs9uMzGUY9_EM5nRb4YngKCa4rLv4pmoUFNEP0Lqr9w-usbdJ4PAajqMvQou2YFYbqcvV77LapdvVnIBOHvFZu0IHVBN0vLx8DCLvMQcZ1mvc_oKoQkl_hdXlHAHtO9BYxIz7twUh6D",
+      `https://services2.arcgis.com/y20RuA5nmE8htWdM/ArcGIS/rest/services/service_d11617ca0c574916a61ed0717ef43960/FeatureServer/0/updateFeatures?token=${token}`,
       requestOptions
     )
       .then((response) => response.text())

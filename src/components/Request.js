@@ -42,7 +42,7 @@ const Request = () => {
                 width="100%"
                 height="100%"
                 allowFullScreen
-                src={`https://survey123.arcgis.com/share/bc45dd156a764d88bab7fd77d32dda9d?portalUrl=https://esri-rw.maps.arcgis.com`}
+                src={`https://survey123.arcgis.com/share/cbe2ffa8672346e29b3a92edfec13ef0?portalUrl=https://esri-rw.maps.arcgis.com`}
               ></iframe>
             </div>
 
@@ -57,31 +57,30 @@ const Request = () => {
                   placeholder="Search School"
                 />
 
-                <CSVLink filename={`School_request-${new Date().toISOString()}.csv`} className="cursor-pointer" data={
-                    features
-                      .filter((feature) =>
-                        (feature.attributes.School + "").startsWith(
-                          searchText
-                        )
-                      ).map(f => (
-                        { ...f.attributes }
-                      ))
-                  }>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-                      />
-                    </svg>
-                  </CSVLink>
+                <CSVLink
+                  filename={`School_request-${new Date().toISOString()}.csv`}
+                  className="cursor-pointer"
+                  data={features
+                    .filter((feature) =>
+                      (feature.attributes.School + "").startsWith(searchText)
+                    )
+                    .map((f) => ({ ...f.attributes }))}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                    />
+                  </svg>
+                </CSVLink>
               </div>
 
               <table
@@ -116,40 +115,6 @@ const Request = () => {
                 <tbody>
                   {features ? (
                     features
-                    .filter((feature) =>
-                    (feature.attributes.School+ "").startsWith(
-                      searchText
-                    )
-                  )
-                    .map((feature, index) => (
-                      <tr
-                        key={index}
-                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                      >
-                        <td className="px-6 py-4">
-                          {feature?.attributes.School}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.Total_number_of_computers}
-                        </td>
-                        <td className="px-6 py-4 ">
-                          {feature?.attributes.Specification}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i3}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i5}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i7_8GB}
-                        </td>
-                        <td className="px-6 py-4">
-                          {feature?.attributes.specifation_i7_16GB}
-                        </td>
-                      </tr>
-                    ))
-                    features
                       .filter((feature) =>
                         (feature.attributes.School + "").startsWith(searchText)
                       )
@@ -158,7 +123,7 @@ const Request = () => {
                           key={index}
                           className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                         >
-                          <td className="px-6 py-4 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          <td className="px-6 py-4">
                             {feature?.attributes.School}
                           </td>
                           <td className="px-6 py-4">

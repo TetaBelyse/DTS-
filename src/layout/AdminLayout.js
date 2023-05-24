@@ -1,18 +1,15 @@
-import React from 'react'
-import Tabs from '../components/Tabs'
-import Navbar from '../components/Navbar'
+import React from "react";
+import Tabs from "../components/Tabs";
+import Navbar from "../components/Navbar";
 
 const AdminLayout = ({ children }) => {
-    return (
-        <div className='w-screen flex flex-col items-center space-y-4'>
-            <Navbar />
-            <Tabs />
-            <div className='w-5/6 pb-4'>
-                {children}
-            </div>
+  return (
+    <div className="w-screen flex flex-col items-center space-y-2">
+      <Navbar />
+      <Tabs />
+      <div className="w-screen pl-12 pr-12">{children}</div>
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default AdminLayout
+export default AdminLayout;
