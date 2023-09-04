@@ -6,7 +6,7 @@ import { CSVLink } from "react-csv";
 
 const Delivery = () => {
   const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
+  // const username = localStorage.getItem("username");
 
   const [features, setFeature] = useState([]);
   const [searchText, setsearchText] = useState("");
@@ -84,7 +84,7 @@ const Delivery = () => {
                 width="100%"
                 height="100%"
                 allowFullScreen
-                src="https://survey123.arcgis.com/share/5446d366f15e4ffcb16ce2b6e60982f4?portalUrl=https://esri-rw.maps.arcgis.com"
+                src="https://survey123.arcgis.com/share/ce829ad008ce475b9a9210e1e7f95e61?portalUrl=https://esri-rw.maps.arcgis.com"
               ></iframe>
             </div>
 

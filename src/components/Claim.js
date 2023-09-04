@@ -9,7 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Claim = () => {
   const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
+  // const username = localStorage.getItem("username");
   // const [selectDedommage, setSelectDedommage] = useState(0);
   // const [selectIndemnises, setSetectIndemnises] = useState(0);
 
@@ -255,9 +255,9 @@ const Claim = () => {
                                   setShowModal(true);
                                   console.log(
                                     "_____",
-                                    feature?.attributes.OBJECTID
+                                    feature?.attributes.objectid
                                   );
-                                  setTempId(feature?.attributes.OBJECTID);
+                                  setTempId(feature?.attributes.objectid);
                                 }}
                               >
                                 modify
